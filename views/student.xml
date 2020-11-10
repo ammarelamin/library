@@ -14,7 +14,9 @@
                         </div>
                         <group>
                             <group string="Studnet Info">
-                                <field name="age" required="True" widget="char"/>
+                                <field name="student_identifier"/>
+                                <field name="age" required="True"/>
+
                                 <field name="dob"/>
                                 <field name="gender"/>
                                 <field name="reg_fees"/>
@@ -42,6 +44,25 @@
                     <field name="age"/>
                     <field name="gender"/>
                 </tree>
+            </field>
+        </record>
+
+
+        <!-- student.student search view -->
+        <record id="student_view_search" model="ir.ui.view">
+            <field name="name">student.student.view.search</field>
+            <field name="model">student.student</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <group string="Group By">
+                        <filter name="group_by_gender" string="Gender" context="{'group_by':'gender'}"/>
+                        
+                    </group>
+        
+
+                </search>
             </field>
         </record>
 

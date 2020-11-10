@@ -21,6 +21,7 @@
     'data': [
         'views/student.xml',
         'views/book.xml',
+        'book_sequence.xml',
     ],
     'installable': True,
     'auto_install': False,

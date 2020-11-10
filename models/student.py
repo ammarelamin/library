@@ -1,4 +1,8 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+
+from odoo.exceptions import UserError, ValidationError
+
+
 
 
 class Students(models.Model):
@@ -6,6 +10,8 @@ class Students(models.Model):
     _description = 'This model contains all students and their info'
 
     name = fields.Char(string='Name', required=True, size=4)
+    student_identifier = fields.Char(string='StudentID')
+    
     age = fields.Integer(string='Age')
     dob = fields.Date(string='Date of Birth')
     gender = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),],
@@ -20,6 +26,24 @@ class Students(models.Model):
     def compute_reg_fees(self):
         for rec in self:
             rec.reg_fees = rec.parent_id.salary * 0.1
+
+    
+    _sql_constraints = [
+        (
+            'student_identifier',
+            'UNIQUE(student_identifier)',
+            _('StudentID should be unique')
+        )
+    ]
+
+    
+    @api.constrains('age')
+    def _check_age(self):
+        for record in self:
+            if record.age < 10:
+                raise ValidationError('Student Age should be greater than 10')
+    
+    
       
 
 class Parents(models.Model):

@@ -10,9 +10,13 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name"/></h1>
+                        </div>
                         <group>
                             <!-- Add your fields here -->
-                            <field name="name"/>
+                            
+                            <field name="book_name"/>
                             <field name="author"/>
                             <field name="number_of_pages"/>
                             <field name="price"/>
@@ -30,12 +34,28 @@
                 <tree>
                     <!-- Add your fields here -->
                     <field name="name"/>
+                    <field name="book_name"/>
                     <field name="author"/>
-                    <!-- <field name=" number_of_pages"/> 
-                    <field name="price "/>  -->
                 </tree>
             </field>
         </record>
+
+
+
+        <!-- book.book search view -->
+        <record id="book_view_search" model="ir.ui.view">
+            <field name="name">book.book.view.search</field>
+            <field name="model">book.book</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="book_name"/>
+                </search>
+            </field>
+        </record>
+
+
 
         <!-- book.book action window -->
         <record id="book_action" model="ir.actions.act_window">

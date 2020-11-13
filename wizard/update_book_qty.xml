@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+
+        <!-- Add you code here -->
+        <!-- update.book form view -->
+        <record id="update_book_qty_view_form" model="ir.ui.view">
+            <field name="name">update.book.view.form</field>
+            <field name="model">update.book</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name" invisible="1"/>
+                            <field name="book_id"/>
+                            <field name="qty"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="update_qty" string="Confirm" type="object" class="oe_highlight"/>
+                        
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                    
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- update.book action window -->
+        <record id="update_book_qty_action" model="ir.actions.act_window">
+            <field name="name">Update Book</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.book</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

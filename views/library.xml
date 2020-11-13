@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        
+
+        <!-- book.borrow form view -->
+        <record id="book_borrow_view_form" model="ir.ui.view">
+            <field name="name">book.borrow.view.form</field>
+            <field name="model">book.borrow</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,reject"/>
+                    </header>
+                    <sheet>
+                        <br/>
+                        <group>
+                            <!-- Add your fields here -->
+                            <group string="General Info">
+                                <field name="date"/>
+                                <field name="user_id"/>
+                            </group>
+                            <group string="Student and Book">
+                                <field name="student_id"/>
+                                <field name="book_id"/>
+                            </group>
+                        </group>
+                            <separator string="Note" colspan="4" />
+                            <field name="note" nolable="1"  placeholder="Write note..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- book.borrow tree view -->
+        <record id="book_borrow_view_tree" model="ir.ui.view">
+            <field name="name">book.borrow.view.tree</field>
+            <field name="model">book.borrow</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="student_id"/>
+                    <field name="book_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- book.borrow action window -->
+        <record id="book_borrow_action" model="ir.actions.act_window">
+            <field name="name">Borrow Book</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">book.borrow</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+
+
+        <!-- book.return form view -->
+        <record id="book_return_view_form" model="ir.ui.view">
+            <field name="name">book.return.view.form</field>
+            <field name="model">book.return</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <br/>
+                        <group>
+                            <!-- Add your fields here -->
+                            <group string="General Info">
+                                <field name="date"/>
+                                <field name="user_id"/>
+                            </group>
+                            <group string="Student and Book">
+                                <field name="student_id"/>
+                                <field name="book_id"/>
+                            </group>
+                        </group>
+                            <separator string="Note" colspan="4" />
+                            <field name="note" nolable="1"  placeholder="Write note..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- book.return tree view -->
+        <record id="book_return_view_tree" model="ir.ui.view">
+            <field name="name">book.return.view.tree</field>
+            <field name="model">book.return</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="student_id"/>
+                    <field name="book_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- book.return action window -->
+        <record id="book_return_action" model="ir.actions.act_window">
+            <field name="name">Return Book</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">book.return</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+
+
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="library_menu_categ" name="Library Management" parent="library_menu_root" sequence="10"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="book_borrow_menu_act" name="Borrow Book" parent="library_menu_categ" action="book_borrow_action" sequence="2"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="book_return_menu_act" name="Return Book" parent="library_menu_categ" action="book_return_action" sequence="5"/>
+
+    </data>
+</odoo>

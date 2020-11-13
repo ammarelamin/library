@@ -19,8 +19,10 @@
     #     ],
     # },
     'data': [
+        'wizard/update_book_qty.xml',
         'views/student.xml',
         'views/book.xml',
+        'views/library.xml',
         'book_sequence.xml',
     ],
     'installable': True,

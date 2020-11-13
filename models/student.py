@@ -15,11 +15,12 @@ class Students(models.Model):
     age = fields.Integer(string='Age')
     dob = fields.Date(string='Date of Birth')
     gender = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),],
-    required=True, default='male')
+    required=True)
     reg_fees = fields.Float(string='Registration Fees', readonly=True,
     compute='compute_reg_fees')
     note = fields.Text(string='Note')
-    parent_id = fields.Many2one(comodel_name='student.parent', string='Parent')
+    parent_id = fields.Many2one(comodel_name='student.parent', string='Parent',
+    domain=[('age','=', 30),('gender','=','female')])
     address = fields.Char(string='Address', related='parent_id.address')
 
     @api.onchange('parent_id')

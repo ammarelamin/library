@@ -39,6 +39,7 @@
                                         <field name="student_id"/>
                                         <field name="date"/>
                                         <field name="user_id"/>
+                                        <field name="book_id"/>
                                     </tree>
                                     
                                 </field>

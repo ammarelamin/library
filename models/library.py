@@ -36,6 +36,11 @@ class bookBorrow(models.Model):
             rec.book_id.qty_available -= 1
             rec.write({'state':'confirm'})
 
+    def action_reject(self):
+        for rec in self:
+            rec.write({'state':'reject'})
+            # rec.state = 'reject'
+
 
 
 class bookRetention(models.Model):
@@ -44,7 +49,7 @@ class bookRetention(models.Model):
 
     # name = fields.Char(string='Name')
     state = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('confirm', 'Confirmed')],
-    readonly=True)
+    readonly=True, default='draft')
     date = fields.Date(string='Date', default=fields.Date.context_today)
     user_id = fields.Many2one(comodel_name='res.users', string='Responsible',
     default=lambda self: self.env.user)
@@ -55,6 +60,17 @@ class bookRetention(models.Model):
     note = fields.Text(string='Note')
 
     
+    def action_confirm(self):
+        for rec in self:
+            #check if the book is in student custody
+            custody = self.env['borrowed.book'].search([('student_id','=',rec.student_id.id),
+            ('book_id','=',rec.book_id.id)])
+            if len(custody) >= 1:
+                print('-------------Custody---------------- = ', custody)
+                custody.unlink()
+                rec.book_id.qty_available += 1
+                rec.write({'state': 'confirm'})
+
     
 
     

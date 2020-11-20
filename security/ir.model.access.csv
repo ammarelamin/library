@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_library_book_user,Access Book,model_book_book,library_user,1,1,1,0
+access_library_borrowed_book,Access Borrowed Book,model_borrowed_book,library_user,1,0,0,0
+access_library_student,Access Students,model_student_student,library_user,1,1,1,1
+access_library_book_admin,Access Book,model_book_book,library_administrator,1,1,1,1

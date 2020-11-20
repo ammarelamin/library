@@ -19,6 +19,8 @@
     #     ],
     # },
     'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'wizard/update_book_qty.xml',
         'views/student.xml',
         'views/book.xml',

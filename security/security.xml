@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>        
+        
+        
+        <record id="module_library" model="ir.module.category">
+            <field name="name">Library</field>
+            <field name="sequence" eval="10" />
+            <field name="visible" eval="True" />
+            <field name="description">Manage library users</field>
+        </record>
+
+        
+        <record id="library_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_library"/>
+        </record>
+
+        
+        <record id="library_administrator" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="category_id" ref="module_library"/>
+            <field name="implied_ids" eval="[(4, ref('library_user'))]"/>
+        </record>
+
+        
+    </data>
+</odoo>

@@ -10,9 +10,9 @@
     # 'contributors': [
     #     '',
     # ],
-    # 'depends': [
-    #     '',
-    # ],
+    'depends': [
+        'sale_management',
+    ],
     # 'external_dependencies': {
     #     'python': [
     #         '',
@@ -22,6 +22,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizard/update_book_qty.xml',
+        'views/sale.xml',
         'views/student.xml',
         'views/book.xml',
         'views/library.xml',

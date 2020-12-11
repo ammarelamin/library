@@ -97,7 +97,7 @@
         </record>
 
         <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="book_menu_act" name="Books" parent="library_menu_root" action="book_action" group_id="" sequence="10"/>
+        <menuitem id="book_menu_act" name="Books" parent="library_menu_root" action="book_action" sequence="10"/>
 
     </data>
 </odoo>
